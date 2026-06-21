@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.schoolbus.controller.MainController">
+    <top>
+        <MenuBar>
+            <Menu text="Fájl">
+                <MenuItem onAction="#handleGenerate" text="Véletlenszerű generálás" />
+                <MenuItem onAction="#handleDelete" text="Törlés (Visszaállítás alaphelyzetbe)" />
+                <SeparatorMenuItem />
+                <MenuItem onAction="#handleSave" text="Mentés (JSON)..." />
+                <MenuItem onAction="#handleLoad" text="Betöltés (JSON)..." />
+                <Menu fx:id="recentFilesMenu" text="Legutóbbi fájlok (Gyors betöltés)" />
+                <SeparatorMenuItem />
+                <MenuItem onAction="#handleExit" text="Kilépés" />
+            </Menu>
+            <Menu text="Súgó">
+                <MenuItem onAction="#handleShowHelp" text="Használati útmutató" />
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.25" BorderPane.alignment="CENTER">
+            <ScrollPane fitToWidth="true" styleClass="sidebar">
+                <VBox spacing="10.0">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                    </padding>
+
+                    <Label styleClass="header-label" text="Karosszéria (Főtest)" />
+                    <Label text="Hosszúság (L)" styleClass="text-label"/>
+                    <Slider fx:id="lengthSlider" max="800.0" min="200.0" showTickMarks="true" />
+                    <Label text="Magasság (H)" styleClass="text-label"/>
+                    <Slider fx:id="heightSlider" max="400.0" min="100.0" showTickMarks="true" />
+                    <Label text="Szélesség (W)" styleClass="text-label"/>
+                    <Slider fx:id="widthSlider" max="300.0" min="80.0" showTickMarks="true" />
+
+                    <Separator styleClass="dark-separator"/>
+
+                    <Label styleClass="header-label" text="Kerekek" />
+                    <Label text="Sugár (R)" styleClass="text-label"/>
+                    <Slider fx:id="wheelRadiusSlider" max="100.0" min="10.0" showTickMarks="true" />
+                    <Label text="Vastagság (T)" styleClass="text-label"/>
+                    <Slider fx:id="wheelThicknessSlider" max="80.0" min="10.0" showTickMarks="true" />
+
+                    <Separator styleClass="dark-separator"/>
+
+                    <Label styleClass="header-label" text="Részletek és Dizájn" />
+                    <Label text="Ablakok száma" styleClass="text-label"/>
+                    <Slider fx:id="windowCountSlider" blockIncrement="1" majorTickUnit="1" max="10" min="2" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                    <CheckBox fx:id="doorOpenCheck" text="Utasajtó kinyitása" styleClass="check-box"/>
+
+                    <Label text="Busz színe" styleClass="text-label"/>
+                    <ColorPicker fx:id="colorPicker" styleClass="text-label" maxWidth="1.7976931348623157E308"/>
+
+                    <Separator styleClass="dark-separator"/>
+
+                    <Label styleClass="header-label" text="CAD és 3D Eszközök" />
+                    <Button text="3D Kamera visszaállítása" onAction="#handleResetCamera" style="-fx-background-color: #3e3e42; -fx-text-fill: #4fc1ff; -fx-font-weight: bold;" maxWidth="1.7976931348623157E308"/>
+                    <CheckBox fx:id="snapToGridCheck" text="Rácshoz igazítás (2D)" styleClass="check-box"/>
+                    <CheckBox fx:id="autoRotateCheck" text="Automatikus forgatás (3D)" styleClass="check-box"/>
+                    <CheckBox fx:id="driveModeCheck" text="Vezetési mód (Animáció)" styleClass="check-box"/>
+                    <CheckBox fx:id="nightModeCheck" text="Éjszakai mód (Fényszórók)" styleClass="check-box"/>
+                    <CheckBox fx:id="wireframeCheck" text="3D Drótváz (Wireframe)" styleClass="check-box"/>
+                    <CheckBox fx:id="stopSignCheck" text="Stoptábla kinyitása" styleClass="check-box"/>
+
+                    <Separator styleClass="dark-separator"/>
+
+                    <Label styleClass="header-label" text="Analitika" />
+                    <Label fx:id="idLabel" styleClass="info-label" text="ID: " />
+                    <Label fx:id="volumeLabel" styleClass="info-label" text="Térfogat: 0.0" />
+                    <Label fx:id="surfaceLabel" styleClass="info-label" text="Felszín: 0.0" />
+                </VBox>
+            </ScrollPane>
+
+            <TabPane tabClosingPolicy="UNAVAILABLE">
+                <Tab text="3D CAD Stúdió">
+                    <StackPane fx:id="pane3D" styleClass="view-bg-3d" />
+                </Tab>
+                <Tab text="2D Interaktív Tervrajzok">
+                    <Pane fx:id="canvasPane" styleClass="view-bg-2d">
+                        <Canvas fx:id="canvas" />
+                    </Pane>
+                </Tab>
+            </TabPane>
+        </SplitPane>
+    </center>
+</BorderPane>

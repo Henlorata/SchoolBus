@@ -1,0 +1,79 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #1e1e1e;
+}
+.menu-bar {
+    -fx-background-color: #2d2d30;
+}
+.menu-bar .label {
+    -fx-text-fill: #cccccc;
+}
+
+/* Lenyíló menük (Dropdown) sötétítése */
+.context-menu {
+    -fx-background-color: #2d2d30;
+    -fx-border-color: #3f3f46;
+}
+.menu-item {
+    -fx-background-color: transparent;
+}
+.menu-item .label {
+    -fx-text-fill: #cccccc;
+}
+.menu-item:focused {
+    -fx-background-color: #007acc;
+}
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.sidebar {
+    -fx-background-color: #252526;
+    -fx-border-color: #3f3f46;
+    -fx-border-width: 0 1 0 0;
+}
+.sidebar .viewport {
+    -fx-background-color: transparent;
+}
+.header-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4fc1ff; /* Világoskék CAD kiejtés */
+    -fx-padding: 10 0 5 0;
+}
+.text-label, .check-box {
+    -fx-text-fill: #d4d4d4;
+    -fx-font-size: 13px;
+}
+.check-box .box {
+    -fx-background-color: #3e3e42;
+    -fx-border-color: #555555;
+}
+.check-box:selected .mark {
+    -fx-background-color: #4fc1ff;
+}
+.info-label {
+    -fx-text-fill: #9cdcfe;
+    -fx-font-weight: bold;
+}
+.dark-separator .line {
+    -fx-border-color: #3f3f46;
+}
+.view-bg-3d {
+    -fx-background-color: #1a1a1a;
+}
+.view-bg-2d {
+    -fx-background-color: #1e1e1e;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #2d2d30;
+}
+.tab {
+    -fx-background-color: #3e3e42;
+}
+.tab:selected {
+    -fx-background-color: #007acc;
+}
+.tab .tab-label {
+    -fx-text-fill: white;
+}
